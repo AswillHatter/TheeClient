@@ -50,8 +50,9 @@ async function f1(globalDiv) {
             let div = document.createElement("div");
             div.id = rez[i]['id'];
             div.className = "Contant";
+            div.ondblclick = "updateBranch(" + div.id + ")";
             div.style.marginLeft = elemMarg + "px";
-            div.innerHTML = rez[i]['name'] + "   <button onclick='remBranch(this.parentNode.id)'> - </button>  <button onclick='addBranch(this.parentNode.id)'> + </button>";
+            div.innerHTML =  rez[i]['name'] + "   <button onclick='remBranch(this.parentNode.id)'> - </button>  <button onclick='addBranch(this.parentNode.id)'> + </button>";
             globalDiv.appendChild(div);
         }
     }
@@ -66,13 +67,14 @@ function remBranch(thisid){
     this.lastClickedId = thisid;
     location.href = '#openModal2';
     console.log("remBranch ",thisid)
+    let elem = document.getElementById(thisid);
+
 
 }
 
 function delNodeQ(){
     console.log("im in delete method ");
     let thisId = this.lastClickedId;
-    //console.log("lastClickedId = ", lastClickedId)
     let xhr = new XMLHttpRequest();
     let url = "http://test.site/Test/branch/" + thisId;
     console.log("url", url);
@@ -92,7 +94,8 @@ function delNodeQ(){
 }
 
 function updateBranch(thisid){
-
+    this.lastClickedId = thisid;
+    location.href = '#openModal3';
 }
 
 function renameNodeQ(){
@@ -101,7 +104,7 @@ function renameNodeQ(){
 
 
 function addBranch(thisid){
-    lastClickedId = thisid;
+    this.lastClickedId = thisid;
     location.href = '#openModal1';
 }
 
