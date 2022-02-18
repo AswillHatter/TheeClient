@@ -109,7 +109,7 @@ function addBranch(thisid){
 }
 
 function newNodeQ(){
-    let parentId = lastClickedId;
+    let parentId = this.lastClickedId;
     let textData = document.getElementById('newNodeName').value;
     let formData = new FormData();
 
